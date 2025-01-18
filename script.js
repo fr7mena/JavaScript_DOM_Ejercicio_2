@@ -51,20 +51,35 @@ function borrarPrimero(divPadre) {
     let primerHijo = divPadre.firstChild;
     divPadre.removeChild(primerHijo);
 }
-/*Crear un párafo P asociandole un texto que se denomine Vacío. En ese momento, busca la manera en que puedas sustituir el primer hijo por este nuevo párrafo que hemos creado.*/
+/*Crear un párafo P asociandole un texto que se denomine Vacío. En ese momento, busca la manera en que puedas sustituir el primer hijo por este nuevo párrafo que hemos creado.*//*
 function sustituirPrimeroVacio(divPadre) {
     let elementosHijos = divPadre.children;
     let parrafo = document.createElement("p");
     parrafo.textContent = "Vacío";
     parrafo.className = "miOtraClase";
 
-    for (let i = 0; i < elementosHijos.length; i++) {
+    for (let i = 1; i < elementosHijos.length; i++) { //Empiezo en 1 porque es asi como me funciona correctamente porque si pongo 0 me pone el parrafo "Vacío" en la primera línea, aunque creo que es debido al textarea, que realmente esta vacio y yo voy mirando todos los elementos, y claro los parrafos solo empiezan desde el elemento 1
         if (elementosHijos[i].textContent == "") {
             divPadre.removeChild(elementosHijos[i]);
             divPadre.insertBefore(parrafo, elementosHijos[i]); //se pasa como parámetro el, este orden, el hijo a añadir y el hijo a eliminar. Este metodo sustituye uno por otro en la misma posición de la collection en la que el anterior fue eliminado, internamente sabe el indice de insercion correspondiente al nuevo elemento
             return;
         }
     }
-}
+}*/
+function sustituirPrimeroVacio(divPadre) {
+    /*divPadre.querySelectorAll("p");*/
+    const parrafos = divPadre.getElementsByTagName("p");
+    const longitud = parrafos.length;
+    let parrafo = document.createElement("p");
+    parrafo.textContent = "Vacío";
+    parrafo.className = "miOtraClase";
 
+    for (let i = 0; i < longitud; i++) {
+        if (parrafos[i].textContent === "") {
+            divPadre.removeChild(parrafos[i]);
+            divPadre.insertBefore(parrafo, parrafos[i]);
+            return;
+        }
+    }
+}
 addEventListener('load', comenzar);

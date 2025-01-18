@@ -33,7 +33,7 @@ function quitarClases() {
 
 function quitarClasesAll() {
     /*const parrafos = document.getElementsByTagName("p");*/
-    for (let i = 0; i < parrafos.length; i++) {
+    for (let i = 0; i < parrafos.length; i++) { //Empiezo en 1 porque me funciona de esta manera
         if (parrafos[i].className !== "") {
             parrafos[i].className = "";
         } else {
